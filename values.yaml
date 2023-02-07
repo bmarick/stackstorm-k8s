@@ -50,6 +50,12 @@ st2:
   # If set, st2.password always overrides any existing password.
   # If not set, the password is auto-generated on install and preserved across upgrades.
   #password: Ch@ngeMe
+  # Disable St2 auth secret generation
+  # If set, it requires a the customer to generate a secret with the name of "{{.Release.Name}}-st2-auth"
+  # That secret must contain the keys ST2_AUTH_USERNAME and ST2_AUTH_PASSWORD
+  # If not set, the secret will automatically be generated
+  disable_generate_st2_auth_secret: false
+
   # ST2 crypto key for the  K/V datastore.
   # See https://docs.stackstorm.com/datastore.html#securing-secrets-admin-only for more info.
   # If set, st2.datastore_crypto_key always overrides any existing datastore_crypto_key.
