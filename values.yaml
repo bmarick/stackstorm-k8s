@@ -239,6 +239,9 @@ st2:
     #  encrypted: false
     #  # Note that Helm templating is supported in this block!
     #  value: "{{ .Release.Name }}"
+  
+  # Name of existing ST2 API KEY secret, disables creation of this secret
+  # existingApiKeysSecret: ""
   # Import a list of ST2 API Keys (https://docs.stackstorm.com/authentication.html#api-key-migration)
   apikeys:
     #- created_at: '2018-12-15T00:21:48.507388Z'

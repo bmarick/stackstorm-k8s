@@ -86,6 +86,13 @@ Create the name of the stackstorm-ha st2 datastore secret to use
 {{- default $name .Values.st2.existingDatastoreSecret -}}
 {{- end -}}
 
+{{/*
+Create the name of the stackstorm-ha st2 API Key secret to use
+*/}}
+{{- define "stackstorm-ha.secrets.st2ApiKeys" -}}
+{{- $name := print .Release.Name "-st2-apikeys" -}}
+{{- default $name .Values.st2.existingApiKeysSecret -}}
+{{- end -}}
 
 {{/*
 Generate '-' prefix only when the variable is defined

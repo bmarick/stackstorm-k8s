@@ -212,7 +212,7 @@ spec:
             medium: Memory
         - name: st2-apikeys-vol
           secret:
-            secretName: {{ .Release.Name }}-st2-apikeys
+            secretName: {{ include "stackstorm-ha.secrets.st2ApiKeys" . }}
         {{- range $.Values.jobs.extra_volumes }}
         - name: {{ required "Each volume must have a 'name' in jobs.extra_volumes" .name }}
           {{- tpl (required "Each volume must have a 'volume' definition in jobs.extra_volumes" .volume | toYaml) $ | nindent 10 }}
