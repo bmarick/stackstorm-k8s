@@ -122,7 +122,9 @@ spec:
       annotations:
         # TODO: Investigate/propose running Helm hook only on condition when ConfigMap or Secret has changed
         checksum/urls: {{ include (print $.Template.BasePath "/configmaps_st2-urls.yaml") . | sha256sum }}
+        {{- if not .Values.st2.existingApiKeysSecret }}
         checksum/apikeys: {{ include (print $.Template.BasePath "/secrets_st2apikeys.yaml") . | sha256sum }}
+        {{- end }}
         {{- if .Values.jobs.annotations }}
           {{- toYaml .Values.jobs.annotations | nindent 8 }}
         {{- end }}
